@@ -1,0 +1,16 @@
+.TH man 1 "16 - April - 2024" 0.1 "simple shell man page"
+
+.SH NAME
+.B Simple shell
+- create in C and linux operating system
+
+.SH SYNOPSIS
+ hsh [options] [filename]
+
+
+
+ .SH OPTIONS
+ -\-
+
+ .SH AUTHORS
+ Nicolas Rondon and Clever Perea
