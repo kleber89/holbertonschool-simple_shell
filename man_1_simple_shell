@@ -7,6 +7,11 @@
 .SH SYNOPSIS
  hsh [options] [filename]
 
+.SH DESCRIPTION
+.B hsh
+Is a personal UNIX command line interpreter, fully written in C language. It processes commands entered through standard input and manages memory effectively.
+
+
 
 
  .SH OPTIONS
