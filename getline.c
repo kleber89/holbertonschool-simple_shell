@@ -1,12 +1,18 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
+#include "header.h"
 
-int main()
+/**
+  * main - simple shell
+  *
+  * @argc: argument counts 
+  *
+  * @argv: varguments vector
+  */
+
+int main(int argc __attribute__((unused)), char **argv)
 {
-	char *buffer = NULL;
-	char *token = NULL;
+	char *buffer = NULL, **my_tokens = NULL;
 	size_t size_of_buf = 40;
+	pid_t pid;
 
 	buffer = (char *)malloc(size_of_buf * sizeof(char));
 
@@ -15,11 +21,9 @@ int main()
 		free(buffer);
 		exit(1);
 	}
-
-
 	for (; ;)
 	{
-		printf("%s", "#cisfun$ ");
+		printf("#cisfun$ ");
 
 		if (getline(&buffer, &size_of_buf, stdin) == EOF)
 			break;
@@ -27,19 +31,15 @@ int main()
 		if (*buffer == '\n')
 			continue;
 
-		/*printf("%s", buffer);*/
-
-		token = strtok(buffer, " ");
-
-		while (token)
+		pid = fork();
+		if (pid < 0)
 		{
-			printf("%s", token);
-			token = strtok(NULL, " ");
-
-		}
-
+			perror("fork failed");
+			exit(EXIT_FAILURE);
+		} else if (pid == 0)
+			tokenize_args(buffer, argv[0], my_tokens);
+		else
+			wait(NULL);
 	}
-
 	return (0);
-
 }
