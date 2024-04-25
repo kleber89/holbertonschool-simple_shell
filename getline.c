@@ -3,9 +3,11 @@
 /**
   * main - simple shell
   *
-  * @argc: argument counts 
+  * @argc: argument counts
   *
   * @argv: varguments vector
+  *
+  * Return: return 0
   */
 
 int main(int argc __attribute__((unused)), char **argv)

@@ -5,10 +5,12 @@
   *
   * @buffer: arguments
   *
+  * @str: argv[0]
+  *
   * @my_tokens: argument tokenize
   */
 
-void tokenize_args(char *buffer, char *str,char **my_tokens)
+void tokenize_args(char *buffer, char *str, char **my_tokens)
 {
 	char *token = NULL;
 	int i = 0;
@@ -24,14 +26,14 @@ void tokenize_args(char *buffer, char *str,char **my_tokens)
 
 	token = strtok(buffer, " \n");
 
-        for (i = 0; token != NULL; i++)
-        {
-            my_tokens[i] = token;
-            token = strtok(NULL, " ");
-        }
-        my_tokens[i] = NULL;
+	for (i = 0; token != NULL; i++)
+	{
+		my_tokens[i] = token;
+		token = strtok(NULL, " ");
+	}
+	my_tokens[i] = NULL;
 	/*printf("%s\n", my_tokens[0]);*/
 
-	execute_command(buffer, str, my_tokens);
+	execute_command(str, my_tokens);
 	/*return(my_tokens);*/
 }
